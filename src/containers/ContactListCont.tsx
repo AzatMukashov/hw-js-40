@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../app/store.ts';
-import { useEffect, useState } from 'react';
-import { fetchContacts, removeContact } from '../components/contactAction.ts';
-import ContactList from '../components/ContactList.tsx';
-import ContactModal from '../components/ContactModal.tsx';
-import { Contact } from '../types';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../app/store.ts";
+import { useEffect, useState } from "react";
+import { fetchContacts, removeContact } from "../components/contactAction.ts";
+import ContactList from "../components/ContactList.tsx";
+import ContactModal from "../components/ContactModal.tsx";
+import { Contact } from "../types";
+import { useNavigate } from "react-router-dom";
 
 const ContactListCont = () => {
   const contacts = useSelector((state: RootState) => state.contacts.contacts);
@@ -27,11 +27,11 @@ const ContactListCont = () => {
   };
   const editContact = () => {
     if (selectedContact) {
-    navigate(`/edit-contact/${selectedContact.id}`);
+      navigate(`/edit-contact/${selectedContact.id}`);
     }
-  }
+  };
   const addNewContact = () => {
-    navigate('/add-contact');
+    navigate("/add-contact");
   };
   return (
     <>

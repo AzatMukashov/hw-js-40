@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Contact } from '../types';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Contact } from "../types";
+import { useNavigate } from "react-router-dom";
 
 interface AddEditContactProps {
   contact?: Contact;
   onSubmit: (contact: Contact) => void;
 }
 
-const AddEditContact: React.FC<AddEditContactProps> = ({contact, onSubmit}) => {
-  const [name, setName] = useState(contact ? contact.name : '');
-  const [phone, setPhone] = useState(contact ? contact.phone : '');
-  const [email, setEmail] = useState(contact ? contact.email : '');
-  const [photo, setPhoto] = useState(contact ? contact.photo : '');
-  const [preview, setPreview] = useState(contact ? contact.photo : '');
+const AddEditContact: React.FC<AddEditContactProps> = ({
+  contact,
+  onSubmit,
+}) => {
+  const [name, setName] = useState(contact ? contact.name : "");
+  const [phone, setPhone] = useState(contact ? contact.phone : "");
+  const [email, setEmail] = useState(contact ? contact.email : "");
+  const [photo, setPhoto] = useState(contact ? contact.photo : "");
+  const [preview, setPreview] = useState(contact ? contact.photo : "");
   const navigate = useNavigate();
   useEffect(() => {
     if (contact) {
@@ -29,12 +32,18 @@ const AddEditContact: React.FC<AddEditContactProps> = ({contact, onSubmit}) => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newContact: Contact = {id: contact ? contact.id : Date.now().toString(), name, phone, email, photo};
+    const newContact: Contact = {
+      id: contact ? contact.id : Date.now().toString(),
+      name,
+      phone,
+      email,
+      photo,
+    };
     onSubmit(newContact);
   };
   return (
     <div>
-      <h1>{contact ? 'Edit Contact' : 'Add New Contact'}</h1>
+      <h1>{contact ? "Edit Contact" : "Add New Contact"}</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
@@ -62,18 +71,16 @@ const AddEditContact: React.FC<AddEditContactProps> = ({contact, onSubmit}) => {
         </div>
         <div>
           <label>Photo URL:</label>
-          <input
-            type="text"
-            value={photo}
-            onChange={handlePhotoChange}
-          />
+          <input type="text" value={photo} onChange={handlePhotoChange} />
         </div>
         <div>
-          {preview && <img src={preview} alt="Photo prewiew" width={200} height={200}/>}
+          {preview && (
+            <img src={preview} alt="Photo prewiew" width={200} height={200} />
+          )}
         </div>
         <button type="submit">Save</button>
       </form>
-      <button onClick={() => navigate('/')}>Back to contacts</button>
+      <button onClick={() => navigate("/")}>Back to contacts</button>
     </div>
   );
 };

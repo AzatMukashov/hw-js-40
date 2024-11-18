@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import contactReducer from '../components/contactReducer.ts';
+import { configureStore } from "@reduxjs/toolkit";
+import contactReducer from "../components/contactReducer.ts";
 
 export const store = configureStore({
   reducer: {
